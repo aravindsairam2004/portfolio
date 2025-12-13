@@ -8,12 +8,20 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #020617, #020617 40%, #031126);
-      color: #e5e7eb;
-      min-height: 100vh;
-      overflow-x: hidden;
+       font-family: 'Poppins', sans-serif;
+       background: linear-gradient(135deg, #020617, #020617 40%, #031126);
+       color: #e5e7eb;
+       min-height: 100vh;
+       overflow-x: hidden;
+       display: flex;
+       flex-direction: column;
     }
+    .main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
     /* BACKGROUND ANIMATION */
     .grid-bg {
@@ -167,7 +175,7 @@
 </head>
 <body>
   <div class="grid-bg"></div>
-
+  <div class="main">
   <header>
     <img src="images/profile.jpg" alt="Profile Photo">
     <h1>ARAVIND SAIRAM</h1>
@@ -180,7 +188,7 @@
     <button onclick="openPopup('projects')">Projects</button>
     <button onclick="openPopup('contact')">Contact</button>
   </nav>
-
+  </div>
   <!-- ABOUT -->
   <div class="popup" id="about">
     <div class="popup-content">
@@ -246,3 +254,4 @@
   </script>
 </body>
 </html>
+
