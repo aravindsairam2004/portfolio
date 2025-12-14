@@ -125,6 +125,7 @@ nav button:hover{
 
 /* POPUPS */
 .popup{
+  overflow-y:auto;
   position:fixed;inset:0;
   background:rgba(2,6,23,.92);
   display:none;
@@ -227,6 +228,114 @@ a.tech-link{
 a.tech-link:hover{
   text-shadow:0 0 15px #00f7ff;
 }
+  /* ================= MOBILE RESPONSIVENESS ================= */
+@media (max-width: 768px){
+
+  body{
+    overflow:auto;
+  }
+
+  .main{
+    height:auto;
+    padding:30px 15px;
+  }
+
+  header img{
+    width:130px;
+    height:130px;
+  }
+
+  header h1{
+    font-size:2rem;
+    letter-spacing:2px;
+  }
+
+  header p{
+    font-size:0.95rem;
+  }
+
+  #quote{
+    font-size:0.9rem;
+    padding:0 10px;
+    text-align:center;
+  }
+
+  nav{
+    gap:15px;
+    margin-top:25px;
+  }
+
+  nav button{
+    width:100%;
+    max-width:260px;
+    padding:12px 18px;
+    font-size:0.85rem;
+  }
+
+  .popup-content{
+    width:95%;
+    padding:20px;
+    max-height:85vh;
+    overflow-y:auto;
+  }
+
+  .popup-content h2{
+    font-size:1.4rem;
+  }
+
+  .close{
+    font-size:24px;
+    top:12px;
+    right:16px;
+  }
+
+  .skills-grid{
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:14px;
+  }
+
+  .skill-card{
+    padding:14px;
+    font-size:0.85rem;
+  }
+
+  .project{
+    padding:16px;
+  }
+
+  .project h3{
+    font-size:1rem;
+  }
+
+  .project p{
+    font-size:0.9rem;
+  }
+
+  .cert-grid{
+    grid-template-columns:1fr;
+  }
+
+  .cert-card{
+    padding:16px;
+  }
+
+  .cert-card h3{
+    font-size:1rem;
+  }
+
+  .cert-card p{
+    font-size:0.85rem;
+  }
+
+  ul{
+    padding-left:18px;
+  }
+
+  li{
+    font-size:0.9rem;
+  }
+}
+
 </style>
 </head>
 
@@ -374,6 +483,17 @@ canvas.height = window.innerHeight;
 let mouse = {x:null, y:null, radius:120};
 window.addEventListener('mousemove', (e)=>{mouse.x=e.x; mouse.y=e.y;});
 window.addEventListener('mouseout', ()=>{mouse.x=null; mouse.y=null;});
+/* ===== TOUCH SUPPORT FOR MOBILE ===== */
+window.addEventListener('touchmove', (e)=>{
+  mouse.x = e.touches[0].clientX;
+  mouse.y = e.touches[0].clientY;
+});
+
+window.addEventListener('touchend', ()=>{
+  mouse.x = null;
+  mouse.y = null;
+});
+
 
 let particlesArray = [];
 const colors = ['#00f7ff','#0ff','#0ff7ff'];
@@ -462,3 +582,4 @@ typeQuote();
 </script>
 </body>
 </html>
+
