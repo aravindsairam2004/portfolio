@@ -106,8 +106,10 @@ nav button:hover{
   background:linear-gradient(180deg,#020617,#031126);
   border:1px solid rgba(0,247,255,.45);
   border-radius:20px;
-  padding:45px;
+  padding:30px;
   width:90%;max-width:900px;
+  max-height:80vh;
+  overflow-y:auto;
   box-shadow:0 0 45px rgba(0,247,255,.45);
   position:relative;
   animation:popupIn .4s ease;
@@ -118,25 +120,6 @@ nav button:hover{
   font-family:'Orbitron',sans-serif;
   color:#00f7ff;
   margin-bottom:20px;
-}
-.popup-content p, .popup-content td, .popup-content th{
-  line-height:1.8;
-  margin-bottom:10px;
-  color:#e5e7eb;
-}
-.popup-content table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:15px;
-}
-.popup-content th, .popup-content td{
-  border:1px solid rgba(0,247,255,.3);
-  padding:10px 12px;
-  text-align:left;
-}
-.popup-content th{
-  background:rgba(0,247,255,.08);
-  color:#00f7ff;
 }
 
 .close{
@@ -174,6 +157,35 @@ nav button:hover{
 .project:hover{
   box-shadow:0 0 35px rgba(0,247,255,.6);
   transform:scale(1.02);
+}
+
+/* CERTIFICATIONS */
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.cert-card{
+  background:rgba(0,247,255,.08);
+  border:1px solid #00f7ff;
+  border-radius:16px;
+  padding:18px;
+  transition:.35s;
+  box-shadow:0 0 15px rgba(0,247,255,.3);
+}
+.cert-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 35px #00f7ff,0 0 60px rgba(0,247,255,.6);
+}
+.cert-card h3{
+  color:#00f7ff;
+  font-family:'Orbitron',sans-serif;
+  margin-bottom:8px;
+}
+.cert-card p{
+  font-size:0.9rem;
+  opacity:.85;
+  margin-bottom:5px;
 }
 </style>
 </head>
@@ -244,43 +256,38 @@ nav button:hover{
   <div class="popup-content">
     <span class="close" onclick="closePopup('certifications')">&times;</span>
     <h2>Certifications</h2>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Issuing Organization</th>
-        <th>Issue Date</th>
-      </tr>
-      <tr>
-        <td>Data Visualisation</td>
-        <td>IBM Career Education Program</td>
-        <td>July 14, 2025</td>
-      </tr>
-      <tr>
-        <td>DevOps Fundamentals</td>
-        <td>IBM Career Education Program</td>
-        <td>March 8, 2024</td>
-      </tr>
-      <tr>
-        <td>IBM Watson Studio</td>
-        <td>IBM Career Education Program</td>
-        <td>July 14, 2025</td>
-      </tr>
-      <tr>
-        <td>Introduction to Python</td>
-        <td>IBM Career Education Program</td>
-        <td>September 15, 2023</td>
-      </tr>
-      <tr>
-        <td>Java Fundamentals</td>
-        <td>IBM Career Education Program</td>
-        <td>March 7, 2024</td>
-      </tr>
-      <tr>
-        <td>Predictive Modeling with IBM SPSS Modeler</td>
-        <td>IBM Career Education Program</td>
-        <td>July 14, 2025</td>
-      </tr>
-    </table>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <h3>Data Visualisation</h3>
+        <p>IBM Career Education Program</p>
+        <p>July 14, 2025</p>
+      </div>
+      <div class="cert-card">
+        <h3>DevOps Fundamentals</h3>
+        <p>IBM Career Education Program</p>
+        <p>March 8, 2024</p>
+      </div>
+      <div class="cert-card">
+        <h3>IBM Watson Studio</h3>
+        <p>IBM Career Education Program</p>
+        <p>July 14, 2025</p>
+      </div>
+      <div class="cert-card">
+        <h3>Introduction to Python</h3>
+        <p>IBM Career Education Program</p>
+        <p>September 15, 2023</p>
+      </div>
+      <div class="cert-card">
+        <h3>Java Fundamentals</h3>
+        <p>IBM Career Education Program</p>
+        <p>March 7, 2024</p>
+      </div>
+      <div class="cert-card">
+        <h3>Predictive Modeling with IBM SPSS Modeler</h3>
+        <p>IBM Career Education Program</p>
+        <p>July 14, 2025</p>
+      </div>
+    </div>
   </div>
 </div>
 
