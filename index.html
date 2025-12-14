@@ -89,7 +89,14 @@ header p{
   text-align:center;
   line-height:1.6;
   font-size:1rem;
-  opacity:0.85;
+  opacity:0.9;
+  font-family:'Orbitron',sans-serif;
+}
+
+/* Flicker effect */
+@keyframes flicker{
+  0%,19%,21%,23%,25%,54%,56%,100%{opacity:0.9;}
+  20%,22%,24%,55%{opacity:0.4;}
 }
 
 /* NAV */
@@ -210,6 +217,16 @@ nav button:hover{
   opacity:.85;
   margin-bottom:5px;
 }
+
+/* LINKS */
+a.tech-link{
+  color:#00f7ff;
+  text-decoration:none;
+  transition:.3s;
+}
+a.tech-link:hover{
+  text-shadow:0 0 15px #00f7ff;
+}
 </style>
 </head>
 
@@ -234,26 +251,104 @@ nav button:hover{
   </nav>
 </div>
 
-<!-- POPUPS OMITTED FOR BREVITY (KEEP SAME AS PREVIOUS) -->
+<!-- ABOUT -->
+<div class="popup" id="about">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('about')">&times;</span>
+    <h2>About Me</h2>
+    <p>CSE undergraduate at Hindusthan College of Engineering with strong interest in software engineering, data analytics, and AI-driven systems.</p>
+    <p>I enjoy building clean UIs, scalable backends, and intelligent applications that solve real-world problems.</p>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="popup" id="skills">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('skills')">&times;</span>
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">HTML • CSS • JavaScript</div>
+      <div class="skill-card">Node.js • Express.js</div>
+      <div class="skill-card">MySQL • MongoDB</div>
+      <div class="skill-card">REST APIs</div>
+      <div class="skill-card">Git • GitHub</div>
+      <div class="skill-card">Basic AI / ML</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="popup" id="projects">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('projects')">&times;</span>
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Face Recognition Attendance System</h3>
+      <p>AI-powered system that automates attendance using facial recognition, improving accuracy and efficiency.</p>
+    </div>
+    <div class="project">
+      <h3>School Alumni Management Platform</h3>
+      <p>Web application to manage alumni records, interactions, and engagement analytics.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="popup" id="certifications">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('certifications')">&times;</span>
+    <h2>Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <h3>Data Visualisation</h3>
+        <p>IBM Career Education Program</p>
+        <p>July 14, 2025</p>
+      </div>
+      <div class="cert-card">
+        <h3>DevOps Fundamentals</h3>
+        <p>IBM Career Education Program</p>
+        <p>March 8, 2024</p>
+      </div>
+      <div class="cert-card">
+        <h3>IBM Watson Studio</h3>
+        <p>IBM Career Education Program</p>
+        <p>July 14, 2025</p>
+      </div>
+      <div class="cert-card">
+        <h3>Introduction to Python</h3>
+        <p>IBM Career Education Program</p>
+        <p>September 15, 2023</p>
+      </div>
+      <div class="cert-card">
+        <h3>Java Fundamentals</h3>
+        <p>IBM Career Education Program</p>
+        <p>March 7, 2024</p>
+      </div>
+      <div class="cert-card">
+        <h3>Predictive Modeling with IBM SPSS Modeler</h3>
+        <p>IBM Career Education Program</p>
+        <p>July 14, 2025</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="popup" id="contact">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('contact')">&times;</span>
+    <h2>Contact</h2>
+    <p>Email: aravindsairam2004@gmail.com</p>
+    <p>Phone: 94440 63506</p>
+    <p>LinkedIn: <a class="tech-link" href="https://www.linkedin.com/in/aravindsairam2004" target="_blank">linkedin.com/in/aravindsairam2004</a></p>
+  </div>
+</div>
 
 <script>
 function openPopup(id){document.getElementById(id).style.display='flex'}
 function closePopup(id){document.getElementById(id).style.display='none'}
 
-/* QUOTES */
-const quotes = [
-  "Success is not the key to happiness. Happiness is the key to success. – Albert Schweitzer",
-  "The future belongs to those who prepare for it today. – Malcolm X",
-  "Opportunities don't happen. You create them. – Chris Grosser",
-  "Your limitation—it’s only your imagination.",
-  "Push yourself, because no one else is going to do it for you.",
-  "Dream big and dare to fail. – Norman Vaughan",
-  "The secret of getting ahead is getting started. – Mark Twain",
-  "Strive not to be a success, but rather to be of value. – Albert Einstein"
-];
-document.getElementById('quote').innerText = quotes[Math.floor(Math.random()*quotes.length)];
-
-/* PARTICLE NETWORK ANIMATION WITH MOUSE INTERACTION */
+/* PARTICLE NETWORK WITH MOUSE */
 const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -268,32 +363,27 @@ const colors = ['#00f7ff','#0ff','#0ff7ff'];
 
 class Particle{
   constructor(){
-    this.x = Math.random()*canvas.width;
-    this.y = Math.random()*canvas.height;
-    this.size = Math.random()*1.5 + 0.5;
-    this.speedX = (Math.random()-0.5)*0.5;
-    this.speedY = (Math.random()-0.5)*0.5;
-    this.color = colors[Math.floor(Math.random()*colors.length)];
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.size=Math.random()*1.5 +0.5;
+    this.speedX=(Math.random()-0.5)*0.5;
+    this.speedY=(Math.random()-0.5)*0.5;
+    this.color=colors[Math.floor(Math.random()*colors.length)];
   }
   update(){
-    this.x += this.speedX;
-    this.y += this.speedY;
+    this.x+=this.speedX; this.y+=this.speedY;
     if(this.x<0||this.x>canvas.width) this.speedX*=-1;
     if(this.y<0||this.y>canvas.height) this.speedY*=-1;
-    // repel from mouse
     if(mouse.x && mouse.y){
-      let dx = this.x - mouse.x;
-      let dy = this.y - mouse.y;
-      let dist = Math.sqrt(dx*dx + dy*dy);
-      if(dist < mouse.radius){
-        let angle = Math.atan2(dy,dx);
-        let force = (mouse.radius - dist)/mouse.radius;
-        this.x += Math.cos(angle)*force*3;
-        this.y += Math.sin(angle)*force*3;
+      let dx=this.x-mouse.x, dy=this.y-mouse.y;
+      let dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<mouse.radius){
+        let angle=Math.atan2(dy,dx), force=(mouse.radius-dist)/mouse.radius;
+        this.x+=Math.cos(angle)*force*3; this.y+=Math.sin(angle)*force*3;
       }
     }
   }
-  draw(){ctx.fillStyle=this.color;ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();}
+  draw(){ctx.fillStyle=this.color; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill();}
 }
 
 function initParticles(){
@@ -303,11 +393,11 @@ function initParticles(){
 function connectParticles(){
   for(let a=0;a<particlesArray.length;a++){
     for(let b=a+1;b<particlesArray.length;b++){
-      let dx = particlesArray[a].x - particlesArray[b].x;
-      let dy = particlesArray[a].y - particlesArray[b].y;
-      let distance = Math.sqrt(dx*dx + dy*dy);
-      if(distance < 100){
-        ctx.strokeStyle = 'rgba(0,255,255,'+(1-distance/100)*0.3+')';
+      let dx=particlesArray[a].x-particlesArray[b].x;
+      let dy=particlesArray[a].y-particlesArray[b].y;
+      let dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<100){
+        ctx.strokeStyle='rgba(0,255,255,'+(1-dist/100)*0.3+')';
         ctx.lineWidth=1;
         ctx.beginPath();
         ctx.moveTo(particlesArray[a].x,particlesArray[a].y);
@@ -325,12 +415,33 @@ function animate(){
 }
 initParticles();
 animate();
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight; initParticles();});
 
-window.addEventListener('resize', ()=>{
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-  initParticles();
-});
+/* TYPING QUOTE WITH FLICKER */
+const quotes=[
+  "Success is not the key to happiness. Happiness is the key to success. – Albert Schweitzer",
+  "The future belongs to those who prepare for it today. – Malcolm X",
+  "Opportunities don't happen. You create them. – Chris Grosser",
+  "Your limitation—it’s only your imagination.",
+  "Push yourself, because no one else is going to do it for you.",
+  "Dream big and dare to fail. – Norman Vaughan",
+  "The secret of getting ahead is getting started. – Mark Twain",
+  "Strive not to be a success, but rather to be of value. – Albert Einstein"
+];
+const quoteEl=document.getElementById('quote');
+let currentQuote=quotes[Math.floor(Math.random()*quotes.length)];
+let i=0;
+function typeQuote(){
+  if(i<currentQuote.length){
+    let span=document.createElement('span');
+    span.textContent=currentQuote[i];
+    span.style.animation="flicker 1.5s infinite";
+    quoteEl.appendChild(span);
+    i++;
+    setTimeout(typeQuote,50+Math.random()*50);
+  }
+}
+typeQuote();
 </script>
 </body>
 </html>
