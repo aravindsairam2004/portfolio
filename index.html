@@ -8,163 +8,169 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:radial-gradient(circle at top,#020617,#000);
+  color:#e5e7eb;
+  overflow:hidden;
 }
 
-html, body {
-  height: 100%;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #020617, #020617 40%, #031126);
-  color: #e5e7eb;
-  overflow: hidden;
-}
-
-/* BACKGROUND GRID */
-.grid-bg {
-  position: fixed;
-  inset: 0;
+/* CYBER GRID */
+.grid-bg{
+  position:fixed;inset:0;
   background-image:
-    linear-gradient(rgba(0,255,255,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,255,0.07) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: moveGrid 20s linear infinite;
-  z-index: -1;
+    linear-gradient(rgba(0,255,255,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,255,255,.08) 1px,transparent 1px);
+  background-size:45px 45px;
+  animation:gridMove 18s linear infinite;
+  z-index:-1;
+}
+@keyframes gridMove{
+  from{background-position:0 0}
+  to{background-position:450px 450px}
 }
 
-@keyframes moveGrid {
-  from { background-position: 0 0; }
-  to { background-position: 400px 400px; }
-}
-
-/* MAIN CENTER */
-.main {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+/* MAIN */
+.main{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
 /* HEADER */
-header img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: 3px solid #00f7ff;
-  box-shadow: 0 0 30px #00f7ff;
-  object-fit: cover;
-  margin-bottom: 20px;
+header img{
+  width:190px;height:190px;
+  border-radius:50%;
+  border:3px solid #00f7ff;
+  box-shadow:0 0 35px #00f7ff;
+  object-fit:cover;
+  margin-bottom:25px;
+  transition:.4s;
+}
+header img:hover{
+  box-shadow:0 0 55px #00f7ff,0 0 80px rgba(0,247,255,.6);
+  transform:scale(1.05);
 }
 
-header h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 3rem;
-  color: #00f7ff;
-  letter-spacing: 3px;
+header h1{
+  font-family:'Orbitron',sans-serif;
+  font-size:3.1rem;
+  letter-spacing:3px;
+  color:#00f7ff;
 }
-
-header p {
-  opacity: 0.8;
-  margin-top: 10px;
+header p{
+  opacity:.85;
+  margin-top:10px;
 }
 
 /* NAV */
-nav {
-  display: flex;
-  gap: 25px;
-  margin-top: 35px;
-  flex-wrap: wrap;
+nav{
+  display:flex;
+  gap:28px;
+  margin-top:45px;
+  flex-wrap:wrap;
 }
-
-nav button {
-  background: rgba(0,247,255,0.05);
-  border: 1px solid #00f7ff;
-  color: #00f7ff;
-  padding: 14px 26px;
-  font-family: 'Orbitron', sans-serif;
-  cursor: pointer;
-  border-radius: 10px;
-  transition: 0.3s;
+nav button{
+  background:rgba(0,247,255,.08);
+  border:1px solid #00f7ff;
+  color:#00f7ff;
+  padding:15px 30px;
+  border-radius:12px;
+  font-family:'Orbitron',sans-serif;
+  cursor:pointer;
+  transition:.35s;
 }
-
-nav button:hover {
-  background: #00f7ff;
-  color: #000;
-  box-shadow: 0 0 25px #00f7ff;
-  transform: translateY(-3px);
+nav button:hover{
+  background:#00f7ff;
+  color:#000;
+  box-shadow:0 0 30px #00f7ff,0 0 60px rgba(0,247,255,.6);
+  transform:translateY(-4px);
 }
 
 /* POPUPS */
-.popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(2,6,23,0.9);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+.popup{
+  position:fixed;inset:0;
+  background:rgba(2,6,23,.92);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
 }
-
-.popup-content {
-  background: linear-gradient(180deg, #020617, #031126);
-  border: 1px solid rgba(0,247,255,0.4);
-  border-radius: 18px;
-  padding: 40px;
-  width: 90%;
-  max-width: 800px;
-  box-shadow: 0 0 40px rgba(0,247,255,0.35);
-  position: relative;
+.popup-content{
+  background:linear-gradient(180deg,#020617,#031126);
+  border:1px solid rgba(0,247,255,.45);
+  border-radius:20px;
+  padding:45px;
+  width:90%;max-width:820px;
+  box-shadow:0 0 45px rgba(0,247,255,.45);
+  position:relative;
+  animation:popupIn .4s ease;
 }
+@keyframes popupIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
 
-.popup-content h2 {
-  font-family: 'Orbitron', sans-serif;
-  color: #00f7ff;
-  margin-bottom: 20px;
+.popup-content h2{
+  font-family:'Orbitron',sans-serif;
+  color:#00f7ff;
+  margin-bottom:20px;
 }
+.popup-content p{line-height:1.8;margin-bottom:10px}
 
-.close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 28px;
-  cursor: pointer;
-  color: #00f7ff;
+.close{
+  position:absolute;top:16px;right:22px;
+  font-size:28px;cursor:pointer;color:#00f7ff
 }
 
 /* SKILLS */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 15px;
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:18px;
 }
-
-.skill-card {
-  padding: 18px;
-  border: 1px solid rgba(0,247,255,0.3);
-  border-radius: 12px;
-  background: rgba(0,247,255,0.05);
+.skill-card{
+  padding:20px;
+  border-radius:14px;
+  border:1px solid rgba(0,247,255,.35);
+  background:rgba(0,247,255,.06);
+  transition:.35s;
+}
+.skill-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 30px rgba(0,247,255,.6);
 }
 
 /* PROJECTS */
-.project {
-  margin-bottom: 15px;
-  padding: 18px;
-  border-radius: 12px;
-  border: 1px solid rgba(0,247,255,0.3);
-  background: rgba(0,247,255,0.05);
+.project{
+  padding:22px;
+  border-radius:16px;
+  border:1px solid rgba(0,247,255,.35);
+  background:rgba(0,247,255,.06);
+  margin-bottom:18px;
+  transition:.35s;
+}
+.project:hover{
+  box-shadow:0 0 35px rgba(0,247,255,.6);
+  transform:scale(1.02);
+}
+
+/* LINKS */
+a.tech-link{
+  color:#00f7ff;
+  text-decoration:none;
+  transition:.3s;
+}
+a.tech-link:hover{
+  text-shadow:0 0 15px #00f7ff;
 }
 </style>
 </head>
 
 <body>
-
 <div class="grid-bg"></div>
 
 <div class="main">
@@ -175,64 +181,69 @@ nav button:hover {
   </header>
 
   <nav>
-    <button onclick="openPopup('about')">About Me</button>
+    <button onclick="openPopup('about')">About</button>
     <button onclick="openPopup('skills')">Skills</button>
     <button onclick="openPopup('projects')">Projects</button>
     <button onclick="openPopup('contact')">Contact</button>
   </nav>
 </div>
 
-<!-- POPUPS -->
+<!-- ABOUT -->
 <div class="popup" id="about">
   <div class="popup-content">
     <span class="close" onclick="closePopup('about')">&times;</span>
     <h2>About Me</h2>
-    <p>Currently pursuing BE at Hindusthan College of Engineering. Passionate about software, analytics, and AI-driven systems.</p>
+    <p>CSE undergraduate at Hindusthan College of Engineering with strong interest in software engineering, data analytics, and AI-driven systems.</p>
+    <p>I enjoy building clean UIs, scalable backends, and intelligent applications that solve real-world problems.</p>
   </div>
 </div>
 
+<!-- SKILLS -->
 <div class="popup" id="skills">
   <div class="popup-content">
     <span class="close" onclick="closePopup('skills')">&times;</span>
-    <h2>Skills</h2>
+    <h2>Technical Skills</h2>
     <div class="skills-grid">
-      <div class="skill-card">HTML</div>
-      <div class="skill-card">CSS</div>
-      <div class="skill-card">JavaScript</div>
-      <div class="skill-card">Node.js</div>
-      <div class="skill-card">Express.js</div>
-      <div class="skill-card">MySQL</div>
-      <div class="skill-card">MongoDB</div>
+      <div class="skill-card">HTML • CSS • JavaScript</div>
+      <div class="skill-card">Node.js • Express.js</div>
+      <div class="skill-card">MySQL • MongoDB</div>
+      <div class="skill-card">REST APIs</div>
+      <div class="skill-card">Git • GitHub</div>
+      <div class="skill-card">Basic AI / ML</div>
     </div>
   </div>
 </div>
 
+<!-- PROJECTS -->
 <div class="popup" id="projects">
   <div class="popup-content">
     <span class="close" onclick="closePopup('projects')">&times;</span>
     <h2>Projects</h2>
-    <div class="project">Face Recognition Attendance System</div>
-    <div class="project">School Alumni Management System</div>
+    <div class="project">
+      <h3>Face Recognition Attendance System</h3>
+      <p>AI-powered system that automates attendance using facial recognition, improving accuracy and efficiency.</p>
+    </div>
+    <div class="project">
+      <h3>School Alumni Management Platform</h3>
+      <p>Web application to manage alumni records, interactions, and engagement analytics.</p>
+    </div>
   </div>
 </div>
 
+<!-- CONTACT -->
 <div class="popup" id="contact">
   <div class="popup-content">
     <span class="close" onclick="closePopup('contact')">&times;</span>
     <h2>Contact</h2>
     <p>Email: aravindsairam2004@gmail.com</p>
     <p>Phone: 94440 63506</p>
+    <p>LinkedIn: <a class="tech-link" href="https://www.linkedin.com/in/aravindsairam2004" target="_blank">linkedin.com/in/aravindsairam2004</a></p>
   </div>
 </div>
 
 <script>
-function openPopup(id) {
-  document.getElementById(id).style.display = 'flex';
-}
-function closePopup(id) {
-  document.getElementById(id).style.display = 'none';
-}
+function openPopup(id){document.getElementById(id).style.display='flex'}
+function closePopup(id){document.getElementById(id).style.display='none'}
 </script>
-
 </body>
 </html>
