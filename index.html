@@ -9,26 +9,14 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;overflow:hidden;font-family:'Poppins',sans-serif}
+html,body{height:100%}
 
-/* CSS VARIABLES */
-:root{
-  --bg-color:#020617;
-  --text-color:#e5e7eb;
-  --accent-color:#00f7ff;
-  --particle-color:#0ff;
-}
-body.dark{
-  --bg-color:#fff;
-  --text-color:#000;
-  --accent-color:#0077ff;
-  --particle-color:#00bfff;
-}
 body{
-  background:radial-gradient(circle at top,var(--bg-color),#000);
-  color:var(--text-color);
+  font-family:'Poppins',sans-serif;
+  background:radial-gradient(circle at top,#020617,#000);
+  color:#e5e7eb;
+  overflow:hidden;
   position:relative;
-  transition: all 0.4s;
 }
 
 /* CYBER GRID */
@@ -40,9 +28,11 @@ body{
   background-size:45px 45px;
   animation:gridMove 18s linear infinite;
   z-index:-2;
-  transition: all 0.5s;
 }
-@keyframes gridMove{from{background-position:0 0}to{background-position:450px 450px}}
+@keyframes gridMove{
+  from{background-position:0 0}
+  to{background-position:450px 450px}
+}
 
 /* PARTICLES */
 .particle-bg{
@@ -66,21 +56,22 @@ body{
 header img{
   width:190px;height:190px;
   border-radius:50%;
-  border:3px solid var(--accent-color);
-  box-shadow:0 0 35px var(--accent-color);
+  border:3px solid #00f7ff;
+  box-shadow:0 0 35px #00f7ff;
   object-fit:cover;
   margin-bottom:15px;
   transition:.4s;
 }
 header img:hover{
-  box-shadow:0 0 55px var(--accent-color),0 0 80px rgba(0,247,255,.6);
+  box-shadow:0 0 55px #00f7ff,0 0 80px rgba(0,247,255,.6);
   transform:scale(1.05);
 }
+
 header h1{
   font-family:'Orbitron',sans-serif;
   font-size:3.1rem;
   letter-spacing:3px;
-  color:var(--accent-color);
+  color:#00f7ff;
 }
 header p{
   opacity:.85;
@@ -92,7 +83,7 @@ header p{
 #quote{
   margin-top:20px;
   font-style:italic;
-  color:var(--particle-color);
+  color:#0ff;
   font-weight:500;
   max-width:700px;
   text-align:center;
@@ -117,40 +108,20 @@ nav{
 }
 nav button{
   background:rgba(0,247,255,.08);
-  border:1px solid var(--accent-color);
-  color:var(--accent-color);
+  border:1px solid #00f7ff;
+  color:#00f7ff;
   padding:15px 30px;
   border-radius:12px;
   font-family:'Orbitron',sans-serif;
   cursor:pointer;
   transition:.35s;
-  animation:pulseGlow 3s infinite;
-}
-@keyframes pulseGlow{
-  0%,100%{box-shadow:0 0 10px var(--accent-color);}
-  50%{box-shadow:0 0 25px var(--accent-color),0 0 45px rgba(0,247,255,.6);}
 }
 nav button:hover{
-  background:var(--accent-color);
+  background:#00f7ff;
   color:#000;
-  box-shadow:0 0 30px var(--accent-color),0 0 60px rgba(0,247,255,.6);
+  box-shadow:0 0 30px #00f7ff,0 0 60px rgba(0,247,255,.6);
   transform:translateY(-4px);
 }
-
-/* THEME TOGGLE */
-#themeToggle{
-  position:fixed;top:20px;right:20px;
-  padding:12px 18px;
-  border-radius:12px;
-  border:none;
-  background:var(--accent-color);
-  color:#000;
-  cursor:pointer;
-  font-family:'Orbitron',sans-serif;
-  z-index:20;
-  transition:all 0.3s;
-}
-#themeToggle:hover{box-shadow:0 0 25px var(--accent-color),0 0 50px rgba(0,247,255,.6);}
 
 /* POPUPS */
 .popup{
@@ -162,7 +133,7 @@ nav button:hover{
   z-index:10;
 }
 .popup-content{
-  background:linear-gradient(180deg,var(--bg-color),#031126);
+  background:linear-gradient(180deg,#020617,#031126);
   border:1px solid rgba(0,247,255,.45);
   border-radius:20px;
   padding:30px;
@@ -174,14 +145,16 @@ nav button:hover{
   animation:popupIn .4s ease;
 }
 @keyframes popupIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+
 .popup-content h2{
   font-family:'Orbitron',sans-serif;
-  color:var(--accent-color);
+  color:#00f7ff;
   margin-bottom:20px;
 }
+
 .close{
   position:absolute;top:16px;right:22px;
-  font-size:28px;cursor:pointer;color:var(--accent-color)
+  font-size:28px;cursor:pointer;color:#00f7ff
 }
 
 /* SKILLS */
@@ -196,11 +169,6 @@ nav button:hover{
   border:1px solid rgba(0,247,255,.35);
   background:rgba(0,247,255,.06);
   transition:.35s;
-  opacity:0; transform:translateY(20px);
-}
-.skill-card.show{
-  opacity:1; transform:translateY(0);
-  transition:0.5s ease;
 }
 .skill-card:hover{
   transform:translateY(-6px);
@@ -211,24 +179,15 @@ nav button:hover{
 .project{
   padding:22px;
   border-radius:16px;
-  perspective:1000px;
-  margin-bottom:18px;
-}
-.project-inner{
-  background:rgba(0,247,255,.06);
-  border-radius:16px;
-  padding:20px;
   border:1px solid rgba(0,247,255,.35);
-  transition:transform 0.6s;
-  transform-style:preserve-3d;
-  opacity:0; transform:translateY(20px);
+  background:rgba(0,247,255,.06);
+  margin-bottom:18px;
+  transition:.35s;
 }
-.project:hover .project-inner{
-  transform:rotateY(180deg);
+.project:hover{
   box-shadow:0 0 35px rgba(0,247,255,.6);
+  transform:scale(1.02);
 }
-.project.show .project-inner{opacity:1; transform:translateY(0);}
-.project-inner h3, .project-inner p{backface-visibility:hidden;}
 
 /* CERTIFICATIONS */
 .cert-grid{
@@ -238,41 +197,42 @@ nav button:hover{
 }
 .cert-card{
   background:rgba(0,247,255,.08);
-  border:1px solid var(--accent-color);
+  border:1px solid #00f7ff;
   border-radius:16px;
   padding:18px;
   transition:.35s;
   box-shadow:0 0 15px rgba(0,247,255,.3);
-  opacity:0; transform:translateY(20px);
 }
 .cert-card:hover{
   transform:translateY(-6px);
-  box-shadow:0 0 35px var(--accent-color),0 0 60px rgba(0,247,255,.6);
+  box-shadow:0 0 35px #00f7ff,0 0 60px rgba(0,247,255,.6);
 }
-.cert-card.show{opacity:1; transform:translateY(0);}
-.cert-card h3{color:var(--accent-color); font-family:'Orbitron',sans-serif; margin-bottom:8px;}
-.cert-card p{font-size:0.9rem; opacity:.85; margin-bottom:5px;}
+.cert-card h3{
+  color:#00f7ff;
+  font-family:'Orbitron',sans-serif;
+  margin-bottom:8px;
+}
+.cert-card p{
+  font-size:0.9rem;
+  opacity:.85;
+  margin-bottom:5px;
+}
 
 /* LINKS */
 a.tech-link{
-  color:var(--accent-color);
+  color:#00f7ff;
   text-decoration:none;
   transition:.3s;
 }
 a.tech-link:hover{
-  text-shadow:0 0 15px var(--accent-color);
+  text-shadow:0 0 15px #00f7ff;
 }
-
-/* CURSOR */
-#cursor{position:fixed;width:12px;height:12px;border-radius:50%;background:var(--accent-color);pointer-events:none;transform:translate(-50%,-50%);z-index:9999;transition:background .2s;}
 </style>
 </head>
 
 <body>
 <div class="grid-bg"></div>
 <canvas class="particle-bg" id="particleCanvas"></canvas>
-<div id="cursor"></div>
-<button id="themeToggle">🌙</button>
 
 <div class="main">
   <header>
@@ -280,7 +240,6 @@ a.tech-link:hover{
     <h1>ARAVIND SAIRAM</h1>
     <p>Software Development • Analytics • AI Enthusiast</p>
     <div id="quote"></div>
-    <div id="tech-stack"></div>
   </header>
 
   <nav>
@@ -323,14 +282,14 @@ a.tech-link:hover{
   <div class="popup-content">
     <span class="close" onclick="closePopup('projects')">&times;</span>
     <h2>Projects</h2>
-    <div class="project"><div class="project-inner">
+    <div class="project">
       <h3>Face Recognition Attendance System</h3>
       <p>AI-powered system that automates attendance using facial recognition, improving accuracy and efficiency.</p>
-    </div></div>
-    <div class="project"><div class="project-inner">
+    </div>
+    <div class="project">
       <h3>School Alumni Management Platform</h3>
       <p>Web application to manage alumni records, interactions, and engagement analytics.</p>
-    </div></div>
+    </div>
   </div>
 </div>
 
@@ -340,12 +299,36 @@ a.tech-link:hover{
     <span class="close" onclick="closePopup('certifications')">&times;</span>
     <h2>Certifications</h2>
     <div class="cert-grid">
-      <div class="cert-card"><h3>Data Visualisation</h3><p>IBM Career Education Program</p><p>July 14, 2025</p></div>
-      <div class="cert-card"><h3>DevOps Fundamentals</h3><p>IBM Career Education Program</p><p>March 8, 2024</p></div>
-      <div class="cert-card"><h3>IBM Watson Studio</h3><p>IBM Career Education Program</p><p>July 14, 2025</p></div>
-      <div class="cert-card"><h3>Introduction to Python</h3><p>IBM Career Education Program</p><p>September 15, 2023</p></div>
-      <div class="cert-card"><h3>Java Fundamentals</h3><p>IBM Career Education Program</p><p>March 7, 2024</p></div>
-      <div class="cert-card"><h3>Predictive Modeling with IBM SPSS Modeler</h3><p>IBM Career Education Program</p><p>July 14, 2025</p></div>
+      <div class="cert-card">
+        <h3>Data Visualisation</h3>
+        <p>IBM Career Education Program</p>
+        <p>July 14, 2025</p>
+      </div>
+      <div class="cert-card">
+        <h3>DevOps Fundamentals</h3>
+        <p>IBM Career Education Program</p>
+        <p>March 8, 2024</p>
+      </div>
+      <div class="cert-card">
+        <h3>IBM Watson Studio</h3>
+        <p>IBM Career Education Program</p>
+        <p>July 14, 2025</p>
+      </div>
+      <div class="cert-card">
+        <h3>Introduction to Python</h3>
+        <p>IBM Career Education Program</p>
+        <p>September 15, 2023</p>
+      </div>
+      <div class="cert-card">
+        <h3>Java Fundamentals</h3>
+        <p>IBM Career Education Program</p>
+        <p>March 7, 2024</p>
+      </div>
+      <div class="cert-card">
+        <h3>Predictive Modeling with IBM SPSS Modeler</h3>
+        <p>IBM Career Education Program</p>
+        <p>July 14, 2025</p>
+      </div>
     </div>
   </div>
 </div>
@@ -362,29 +345,35 @@ a.tech-link:hover{
 </div>
 
 <script>
-/* POPUPS */
 function openPopup(id){document.getElementById(id).style.display='flex'}
 function closePopup(id){document.getElementById(id).style.display='none'}
 
-/* THEME TOGGLE */
-document.getElementById('themeToggle').addEventListener('click',()=>{document.body.classList.toggle('dark')});
-
-/* PARTICLE NETWORK */
+/* PARTICLE NETWORK WITH MOUSE */
 const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
 let mouse = {x:null, y:null, radius:120};
-window.addEventListener('mousemove', e=>{mouse.x=e.x; mouse.y=e.y;});
+window.addEventListener('mousemove', (e)=>{mouse.x=e.x; mouse.y=e.y;});
 window.addEventListener('mouseout', ()=>{mouse.x=null; mouse.y=null;});
+
 let particlesArray = [];
-const colors=['var(--accent-color)','var(--particle-color)','#0ff7ff'];
+const colors = ['#00f7ff','#0ff','#0ff7ff'];
+
 class Particle{
-  constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*1.5 +0.5;this.speedX=(Math.random()-0.5)*0.5;this.speedY=(Math.random()-0.5)*0.5;this.color=colors[Math.floor(Math.random()*colors.length)];}
+  constructor(){
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.size=Math.random()*1.5 +0.5;
+    this.speedX=(Math.random()-0.5)*0.5;
+    this.speedY=(Math.random()-0.5)*0.5;
+    this.color=colors[Math.floor(Math.random()*colors.length)];
+  }
   update(){
     this.x+=this.speedX; this.y+=this.speedY;
-    if(this.x<0||this.x>canvas.width)this.speedX*=-1;
-    if(this.y<0||this.y>canvas.height)this.speedY*=-1;
+    if(this.x<0||this.x>canvas.width) this.speedX*=-1;
+    if(this.y<0||this.y>canvas.height) this.speedY*=-1;
     if(mouse.x && mouse.y){
       let dx=this.x-mouse.x, dy=this.y-mouse.y;
       let dist=Math.sqrt(dx*dx+dy*dy);
@@ -396,22 +385,63 @@ class Particle{
   }
   draw(){ctx.fillStyle=this.color; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill();}
 }
-function initParticles(){particlesArray=[];for(let i=0;i<150;i++)particlesArray.push(new Particle());}
-function connectParticles(){for(let a=0;a<particlesArray.length;a++){for(let b=a+1;b<particlesArray.length;b++){let dx=particlesArray[a].x-particlesArray[b].x;let dy=particlesArray[a].y-particlesArray[b].y;let dist=Math.sqrt(dx*dx+dy*dy);if(dist<100){ctx.strokeStyle='rgba(0,255,255,'+(1-dist/100)*0.3+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(particlesArray[a].x,particlesArray[a].y);ctx.lineTo(particlesArray[b].x,particlesArray[b].y);ctx.stroke();}}}}
-function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particlesArray.forEach(p=>{p.update();p.draw();});connectParticles();requestAnimationFrame(animate);}
+
+function initParticles(){
+  particlesArray=[];
+  for(let i=0;i<150;i++) particlesArray.push(new Particle());
+}
+function connectParticles(){
+  for(let a=0;a<particlesArray.length;a++){
+    for(let b=a+1;b<particlesArray.length;b++){
+      let dx=particlesArray[a].x-particlesArray[b].x;
+      let dy=particlesArray[a].y-particlesArray[b].y;
+      let dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<100){
+        ctx.strokeStyle='rgba(0,255,255,'+(1-dist/100)*0.3+')';
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(particlesArray[a].x,particlesArray[a].y);
+        ctx.lineTo(particlesArray[b].x,particlesArray[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particlesArray.forEach(p=>{p.update();p.draw();});
+  connectParticles();
+  requestAnimationFrame(animate);
+}
 initParticles();
 animate();
 window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight; initParticles();});
 
-/* FLICKERING QUOTES */
+/* TYPING QUOTE WITH FLICKER */
 const quotes=[
-"Success is not the key to happiness. Happiness is the key to success. – Albert Schweitzer",
-"The future belongs to those who prepare for it today. – Malcolm X",
-"Opportunities don't happen. You create them. – Chris Grosser",
-"Your limitation—it’s only your imagination.",
-"Push yourself, because no one else is going to do it for you.",
-"Dream big and dare to fail. – Norman Vaughan",
-"The secret of getting ahead is getting started. – Mark Twain",
-"Strive not to be a success, but rather to be of value. – Albert Einstein"
+  "Success is not the key to happiness. Happiness is the key to success. – Albert Schweitzer",
+  "The future belongs to those who prepare for it today. – Malcolm X",
+  "Opportunities don't happen. You create them. – Chris Grosser",
+  "Your limitation—it’s only your imagination.",
+  "Push yourself, because no one else is going to do it for you.",
+  "Dream big and dare to fail. – Norman Vaughan",
+  "The secret of getting ahead is getting started. – Mark Twain",
+  "Strive not to be a success, but rather to be of value. – Albert Einstein"
 ];
-const quoteEl=document
+const quoteEl=document.getElementById('quote');
+let currentQuote=quotes[Math.floor(Math.random()*quotes.length)];
+let i=0;
+function typeQuote(){
+  if(i<currentQuote.length){
+    let span=document.createElement('span');
+    span.textContent=currentQuote[i];
+    span.style.animation="flicker 1.5s infinite";
+    quoteEl.appendChild(span);
+    i++;
+    setTimeout(typeQuote,50+Math.random()*50);
+  }
+}
+typeQuote();
+</script>
+</body>
+</html>
